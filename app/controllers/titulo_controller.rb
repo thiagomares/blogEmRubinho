@@ -33,6 +33,12 @@ class TituloController < ApplicationController
 
     render :json => @titulos
   end
+
+  def ultima_publicacao
+    publicacao = Titulo.ultima_publicacao_geral
+    render :json => { ultima_publicacao: publicacao }
+  end
+
   private
 
   def titulo_params

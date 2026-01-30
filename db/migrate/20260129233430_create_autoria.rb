@@ -1,8 +1,8 @@
 class CreateAutoria < ActiveRecord::Migration[8.1]
   def change
     create_table :autoria do |t|
-      t.integer :id_titulo
-      t.integer :id_autor
+      t.references :titulo, null: false, foreign_key: true
+      t.references :autor, null: false, foreign_key: true
 
       t.timestamps
     end

@@ -19,6 +19,22 @@ class Titulo < ApplicationRecord
     where("DATE(created_at) = ?", data)
   end
 
+  def self.ultima_publicacao_geral
+    autorium = Autorium.joins(:titulo, :autor)
+                       .order('titulos.created_at DESC')
+                       .limit(1)
+                       .first
+    
+    return nil unless autorium
+    
+    {
+      titulo: autorium.titulo.titulo,
+      corpo: autorium.titulo.corpo.truncate(100),
+      data: autorium.titulo.created_at.strftime('%d-%m-%Y'),
+      autor: autorium.autor.name
+    }
+  end
+
 
 
 end

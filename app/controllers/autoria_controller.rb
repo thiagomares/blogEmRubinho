@@ -24,6 +24,6 @@ class AutoriaController < ApplicationController
   private
 
   def autoria_params
-    params.require(:autoria).permit(:id_titulo, :id_autor)
+    params.require(:autoria).permit(:titulo_id, :autor_id)
   end
 end

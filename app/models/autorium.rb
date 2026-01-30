@@ -3,11 +3,11 @@ class Autorium < ApplicationRecord
   belongs_to :titulo
   belongs_to :autor
 
-  validates :id_titulo, presence: true
-  validates :id_autor, presence: true
+  validates :titulo, presence: true
+  validates :autor, presence: true
 
   scope :recentes, -> { order(created_at: :desc) }
-  
+
 
   def descricao_completa
     "#{titulo.titulo} - #{autor.nome}"
